@@ -43,8 +43,8 @@ import (
 func TestSomething(t *testing.T) {
   // set up a mock atop an existing object
   mockObj := monkeymock.Expect(yourObj).
-    ToReceive("method"). // object method name
-    Once. // how many times will this be called? once (obviously)
+    ToReceive("method"). // object method name (string symbol value)
+    Once(). // how many times will this be called? once (obviously)
     WithArgs("string_arg"). // expect specific arg values
     AndCallOriginal(). // preserve the original functionality
     WithReturns(7) // expect a specific return value
