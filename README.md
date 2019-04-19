@@ -1,4 +1,4 @@
-# MonkeyMock - Powerful. Readable. Bananas.
+# MonkeyMock - Readable. Powerful. Bananas.
 
 Easy to use yet powerful mocks library for your Go (golang) tests.
 Heavily inspired by RSpec.
@@ -9,6 +9,17 @@ Features:
 - Mock doubles (stand-ins for real objects)
 - Partial doubles (layer mocks overtop real objects, only mocking for specific calls)
 - Indirect mocks for functions and object methods via monkey patching at runtime ([reference `monkeymock/unsafe` extention](unsafe/README.md))
+
+
+## Tenants of the system
+
+- Any **exported** type/method combination is mockable
+- Can apply mocks to multiple methods of a single object
+- Can apply multiple mocks to a single method with argument matching
+- Can apply multiple mocks to a single method with custom matching
+- Can optionally call actual implementations in response to method calls upon the mock
+- Can stand-in for the real object (Golang type checks will still pass)
+- Does not attempt to handle mocks atop existing mock objects (but that's still interesting)
 
 ## Usage
 
@@ -45,9 +56,15 @@ func TestSomething(t *testing.T) {
   mockObj := monkeymock.Expect(yourObj).
     ToReceive("method"). // object method name (string symbol value)
     Once(). // how many times will this be called? once (obviously)
-    WithArgs("string_arg"). // expect specific arg values
-    AndCallOriginal(). // preserve the original functionality
-    WithReturns(7) // expect a specific return value
+    WithArgs("string_arg"). // expect specific arg values, used as a matcher
+    AndCallsOriginal(). // preserve the original functionality
+    WithReturns(7). // expect and/or provide a specific return value
+    AsDouble() // PartialDouble() // or - AsDouble() //
+
+    monkeymock.Expect(yourObj).
+      ToReceive("method").
+      WithAnyArgs().
+      WithReturns(7). // expect  provide a specific return value
 
   // do some test actions using the mock
   mockObject.method("somevalue")
