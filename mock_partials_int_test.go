@@ -104,12 +104,4 @@ func (s *testMockPartialInternals) TestObjectMethodIntercepts() {
 			exampleStruct.ExamplePublicMethod3("junk", nExpected),
 			"Uncaptured methods on AsPartial objects should continue to execute per normal")
 	}
-	// var _ = Expect(exampleStruct).
-	// 	ToReceive("ExamplePublicMethod2").
-	// 	AndCallsOriginal().
-	// 	AsPartial()
-	// exampleStruct.ExamplePublicMethod2("junk", 1)
-	// assert they are the same object
-	// AssertSame(s.T(), exampleStruct, partialObj)
-
 }

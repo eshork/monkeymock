@@ -3,17 +3,8 @@ package monkeymock
 // Tests that we can only run from an internal perspective
 
 import (
-
-	// 	"errors"
-	// 	"fmt"
-	// 	"regexp"
-	// 	"runtime"
-	// 	"sync"
-
 	"reflect"
 	"testing"
-
-	// 	"time"
 
 	. "github.com/eshork/monkeymock/testsupports"
 	"github.com/stretchr/testify/assert"
@@ -21,42 +12,13 @@ import (
 	"github.com/stretchr/testify/suite"
 )
 
-// import (
-// 	// 	"errors"
-// 	// 	"fmt"
-// 	// 	"regexp"
-// 	// 	"runtime"
-// 	// 	"sync"
-
-// 	"testing"
-
-// 	// 	"time"
-// 	"github.com/eshork/monkeymock"
-// 	"github.com/stretchr/testify/assert"
-// 	"github.com/stretchr/testify/require"
-// 	"github.com/stretchr/testify/suite"
-// )
-
-// each Expect increases global theMockList
-// clearMockList resets theMockList
-
-// 	"errors"
-// 	"fmt"
-// 	"regexp"
-// 	"runtime"
-// 	"sync"
-
-// 	"time"
-
-// every Expect creates a unique Mock
-
 type testInternalMocks struct {
 	suite.Suite
 	// fakeT *testing.T
 }
 
 func TestInternalMocks(t *testing.T) {
-	// suite.Run(t, new(testInternalMocks))
+	suite.Run(t, new(testInternalMocks))
 }
 
 func (s *testInternalMocks) TestMocksAreUniqueOnDiffRefObjects() {
