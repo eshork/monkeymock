@@ -1,3 +1,7 @@
+> **_NOTE:_** Still a Work In Progress. Some documented features don't actually work quite right (or at all)
+
+---
+
 # MonkeyMock - Readable. Powerful. Bananas.
 
 Easy to use yet powerful mocks library for your Go (golang) tests.
